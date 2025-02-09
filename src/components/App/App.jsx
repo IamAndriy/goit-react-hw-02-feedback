@@ -4,6 +4,7 @@ import { FeedbackOptions } from "components/FeedbackOptions/FeedbackOptions";
 import { Statistics } from "components/Statistics/Statistics";
 import {Notification} from "components/Notification/Notification"
 import css from "./App.module.css";
+import PropTypes from "prop-types";
 
 
 export class App extends Component {
@@ -39,7 +40,7 @@ export class App extends Component {
 
         return  <div className={css.container}>
 
-                    <h1 classname={css["title-h1"]}>Please leave feedback</h1>
+                    <h1 className={css["title-h1"]}>Please leave feedback</h1>
 
                     <Section>
                         <FeedbackOptions options={Object.keys(this.state)} 
@@ -48,9 +49,9 @@ export class App extends Component {
                     </Section>
 
                     <Section>
-                        <h2 classname={css["title-h2"]}>Statistics</h2>
+                        <h2 className={css["title-h2"]}>Statistics</h2>
                         {!total
-                            ? <Notification massage="There is no feedback"/> 
+                            ? <Notification message="There is no feedback"/> 
                             : <Statistics good={good} 
                                           neutral={neutral} 
                                           bed={bed} 
@@ -62,3 +63,8 @@ export class App extends Component {
     }
 }
 
+App.propTypes = {
+    good: PropTypes.number,
+    neutral: PropTypes.number,
+    bed: PropTypes.number,
+}
